@@ -43,3 +43,6 @@ jobs:
         uses: actions/deploy-pages@v4
       - name: 23f1000470@ds.study.iitm.ac.in
         run: echo "Hello from GitHub Actions!"
+      # ✅ This is the required step — do not change the name
+      - name: prime-cache-8578248
+        run: echo "Cache result => ${{ steps.cache.outputs.cache-hit }}"
