@@ -1,0 +1,28 @@
+name: Cache Dependencies Example
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Cache dependencies (example: Node.js npm cache)
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: cache-8578248
+
+      # Prime cache step required by exam
+      - name: prime-cache-8578248
+        run: echo "Cache result => ${{ steps.cache.outputs.cache-hit }}"
+
+      - name: Install dependencies
+        run: npm install
